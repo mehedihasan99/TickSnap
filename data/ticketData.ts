@@ -1,11 +1,6 @@
-interface Post {
-  id: string
-  title: string
-  content: string
-  status: 'Open' | 'Done' | 'InProgress' // Restrict status to specific values
-}
+import { Ticket } from '@/features/ticket/types'
 
-export const initialData: Post[] = [
+export const initialData: Ticket[] = [
   {
     id: '1',
     title: 'Ticket 1',
