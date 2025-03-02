@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import ThemeProvider from '@/components/theme/theme-provider'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
@@ -23,16 +24,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  console.log('RootLayout')
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased   dark:bg-slate-900`}
       >
-        <Header />
-        <main className="flex flex-1 w-full px-8 py-24 min-h-screen overflow-y-auto overflow-hidden">
-          {children}
-        </main>
+        <ThemeProvider>
+          <Header />
+          <main className="flex flex-1 w-full px-8 py-24 min-h-screen overflow-y-auto overflow-hidden">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )

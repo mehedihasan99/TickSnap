@@ -12,9 +12,9 @@ type TicketProps = {
 }
 export default function TicketItem({ ticket, isDetails }: TicketProps) {
   const detailsButton = (
-    <Button asChild variant="outline">
+    <Button asChild size="icon" variant="outline">
       <Link href={ticketPath(ticket.id)}>
-        <LucideSquareArrowOutUpRight />
+        <LucideSquareArrowOutUpRight className="h-4 w-4" />
       </Link>
     </Button>
   )
