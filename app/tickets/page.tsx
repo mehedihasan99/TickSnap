@@ -1,18 +1,16 @@
 import Heading from '@/components/Heading'
+import Spinner from '@/components/Spinner'
+import TicketList from '@/features/ticket/components/ticket-list'
+import { Suspense } from 'react'
 
-import { initialData } from '@/data/ticketData'
-import TicketItem from '@/features/ticket/components/ticket-item'
-
-export default function TicketsPage() {
+export default async function TicketsPage() {
   return (
     <div className="flex flex-1 w-full flex-col  gap-y-8">
       <Heading title="Ticket" description="All your ticket one place" />
 
-      <div className="flex flex-col items-center justify-center w-full gap-y-8 animate-fade-in-from-top">
-        {initialData.map((ticket) => (
-          <TicketItem key={ticket.id} ticket={ticket} isDetails />
-        ))}
-      </div>
+      <Suspense fallback={<Spinner />}>
+        <TicketList />
+      </Suspense>
     </div>
   )
 }
