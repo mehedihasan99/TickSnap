@@ -1,11 +1,12 @@
 import { LucideShieldAlert } from 'lucide-react'
-import { cloneElement } from 'react'
+import { cloneElement, ReactElement } from 'react'
 
 interface PlaceholderProps {
   label: string
-  icon?: React.ReactElement
-  button?: React.ReactElement
+  icon?: ReactElement<{ className?: string }>
+  button?: ReactElement<{ className?: string }>
 }
+
 export default function Placeholder({
   label,
   icon = <LucideShieldAlert />,

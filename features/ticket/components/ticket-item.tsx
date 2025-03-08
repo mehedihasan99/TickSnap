@@ -1,11 +1,13 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { ticketPath } from '@/utils/paths'
+import { ticketPath } from '@/paths'
+import { Ticket } from '@prisma/client'
 import clsx from 'clsx'
-import { LucideSquareArrowOutUpRight } from 'lucide-react'
+import { LucideSquareArrowOutUpRight, LucideTrash } from 'lucide-react'
 import Link from 'next/link'
+import { deleteTicket } from '../actions/delete-ticket'
 import { TicketIcons } from '../constants'
-import { Ticket } from '../types'
+
 type TicketProps = {
   ticket: Ticket
   isDetails?: boolean
@@ -17,6 +19,14 @@ export default function TicketItem({ ticket, isDetails }: TicketProps) {
         <LucideSquareArrowOutUpRight className="h-4 w-4" />
       </Link>
     </Button>
+  )
+
+  const deleteButton = (
+    <form action={deleteTicket.bind(null, ticket.id)} method="post">
+      <Button size="icon" variant="outline">
+        <LucideTrash className="h-4 w-4" />
+      </Button>
+    </form>
   )
   return (
     <div
@@ -48,7 +58,10 @@ export default function TicketItem({ ticket, isDetails }: TicketProps) {
           </span>
         </CardContent>
       </Card>
-      {isDetails && <div>{detailsButton}</div>}
+
+      <div className="flex flex-col gap-y-1">
+        {isDetails ? detailsButton : deleteButton}
+      </div>
     </div>
   )
 }

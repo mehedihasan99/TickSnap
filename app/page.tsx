@@ -1,5 +1,5 @@
 import Heading from '@/components/Heading'
-import { ticketsPath } from '@/utils/paths'
+import { ticketsPath } from '@/paths'
 import Link from 'next/link'
 
 export default function Home() {

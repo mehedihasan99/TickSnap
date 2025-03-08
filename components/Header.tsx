@@ -1,4 +1,4 @@
-import { homePath, ticketsPath } from '@/utils/paths'
+import { homePath, ticketsPath } from '@/paths'
 import { LucideKanban } from 'lucide-react'
 import Link from 'next/link'
 import ThemeSwitcher from './theme/theme-switcher'
